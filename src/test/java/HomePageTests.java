@@ -39,7 +39,7 @@ public class HomePageTests extends BaseTest {
         List<Double> prices = homepage.getAllItemPrices();
         Collections.sort(prices);
         Collections.reverse(prices);
-        boolean pricesAreSorted = Ordering.reverse.isOrdered(prices);
+        boolean pricesAreSorted = Ordering.natural().reverse().isOrdered(prices);
         //Assert.assertTrue(pricesAreSorted);
     }
      */

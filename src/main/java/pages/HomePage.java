@@ -60,6 +60,12 @@ public class HomePage {
     @FindBy(className = "product_sort_container")
     WebElement productFilterDropDown;
 
+    @FindBy(xpath = "//div[text()='29.99']")
+    WebElement sauceLabsBackPackPriceLabel;
+
+    @FindBy(xpath = "//div[text()='15.99']")
+    WebElement sauceLabsBoltTShirtPriceLabel;
+
     @FindBy(className = "inventory_item_price")
     List<WebElement> itemPricesLabel;
     public HomePage(WebDriver driver){
@@ -96,6 +102,28 @@ public class HomePage {
         return cqIsDisplayed;
     }
 
+    public String sauceLabsBackPackPrice(){
+        String sauceLabsBackPackPrice = sauceLabsBackPackPriceLabel.getText();
+        return sauceLabsBackPackPrice;
+    }
+
+    public String sauceLabsBoltTShirt(){
+        String sauceLabsBoltTShirtPrice = sauceLabsBoltTShirtPriceLabel.getText();
+        return sauceLabsBoltTShirtPrice;
+    }
+    public String getSauceLabsBackPackPriceText(){
+        String labelPrice = sauceLabsBackPackPriceLabel.getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElement(sauceLabsBackPackPriceLabel, "$29.99"));
+        return labelPrice;
+    }
+
+    public String getSauceLabsBoltTShirtPriceText(){
+        String labelPrice = sauceLabsBoltTShirtPriceLabel.getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElement(sauceLabsBoltTShirtPriceLabel, "$9.99"));
+        return labelPrice;
+    }
     public void clickOnAddSauceLabsBackPackToCartButton(){
         sauceLabsBackPackAddToCartButton.click();
     }
